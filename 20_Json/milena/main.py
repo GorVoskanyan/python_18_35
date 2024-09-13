@@ -25,6 +25,6 @@ for endpoint in range(1, 84):
     except json.decoder.JSONDecodeError as message:
         print(message)
 
-print(eyedata)
+print(eyeData)
 with open("eyedata.json", "w", encoding = "utf-8") as jsonFile:
     json.dump(eyeData, jsonFile, indent = 4)
