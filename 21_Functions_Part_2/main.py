@@ -19,13 +19,9 @@ def find_key(struct, key):
     for substruct in struct.values():
         if isinstance(substruct, dict):
             result = find_key(substruct, key)
-            if result:
-                break
+            if result is not None:
+                return result
 
-    else:
-        result = 'Unknown key'
 
-    return result
-
-result = find_key(site, 'p')
+result = find_key(site, 'a')
 print(result)
