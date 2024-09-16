@@ -1,3 +1,7 @@
+from collections import defaultdict
+
+default_dict = defaultdict(lambda: 'Unknown key')
+
 site = {
     'html': {
         'head': {
@@ -20,10 +24,11 @@ def find_key(struct, key):
     for substruct in struct.values():
         if isinstance(substruct, dict):
             result = find_key(substruct, key)
-            if result: 
+            if result != "Unknown key": 
                 return result
-       
+    return default_dict[key]
+
    
-result = find_key(site, 'div')
+result = find_key(site, 'h11')
 print(result)
 
