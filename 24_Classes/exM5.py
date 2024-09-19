@@ -6,7 +6,7 @@ class House:
 class Human:
     def __init__(self, name, house):
         self.name = name
-        self.satiety = 100
+        self.satiety = 50
         self.house = house
 
     def eat(self):
@@ -64,7 +64,10 @@ for day in range(1, 366):
     human1.live()
     human2.live()
 
-    if not human1.isAlive() or not human2.isAlive():
-        print("Someone died(")
+    if not human1.isAlive() :
+        print(f"{human1.name} died")
+        break
+    if not human2.isAlive():
+        print(f"{human2.name} died")
         break
     print("-" * 30)
