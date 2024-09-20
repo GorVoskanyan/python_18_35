@@ -10,50 +10,52 @@ class Human:
         self.house = house
 
     def eat(self):
-        if self.house.fridge > 10:
+        if self.house.fridge:
             self.satiety += 10
             self.house.fridge -= 5
             print(f"{self.name} ate!")
         else:
             print("Not enough food!")
+        #     if self.house.money:
+        #         self.work()
 
     def work(self):
-        if self.house.money < 100:
+        #if self.house.money < 100:
             self.satiety -= 10
-            self.house.money += 100
+            self.house.money += 10
             print(f"{self.name} worked 100 $!")
+
+
     def shopping(self):
-        if self.house.fridge:
+        if self.house.fridge < 10:
             self.house.money -= 100
             self.house.fridge += 50
             print(f"{self.name} went to shopping")
         else:
-            print("Insuffient fund!")
+            print("Insufficient fund!")
             
     def play(self):
         self.satiety -= 10
         print(f"{self.name} played!")
 
     def isAlive(self):
-        if self.satiety > 0:
-            return True
-        return False
+        return self.satiety
     
     def live(self):
-        dice = __import__("random").randint(1,6)
-        if dice == 3 and self.satiety < 20:
+        dice = __import__('random').randint(1, 6)
+
+        if self.satiety < 20:
             self.eat()
-        elif dice == 3 and self.house.fridge < 10:
+        elif self.house.fridge < 10:
             self.shopping()
-        elif dice == 4 and self.house.money  < 50:
+        elif self.house.money < 50:
             self.work()
+        elif dice == 1:
+            self.work()
+        elif dice == 2:
+            self.eat()
         else:
-            if dice == 1:
-                self.work()
-            elif dice == 2:
-                self.eat()
-            else:
-                self.play()
+            self.play()
 
 house = House(50, 0)
 human1 = Human("Milena", house)

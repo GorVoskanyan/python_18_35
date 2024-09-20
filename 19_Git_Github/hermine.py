@@ -1,2 +1,2 @@
-riint("hello from Hermine")
+print("hello from Hermine")
 
